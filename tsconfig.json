@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "constants/icons.jsx", "constants/images.js"  ]
+, "constants/icons.jsx", "constants/images.js", "services/api.js"  ]
 }
