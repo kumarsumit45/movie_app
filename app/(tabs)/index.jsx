@@ -26,7 +26,7 @@ const Index = () => {
     error: movieErrors,
   } = useFetch(() =>
     fetchMovies({
-      query: "",
+      query: '',
     })
   );
 
@@ -45,10 +45,10 @@ const Index = () => {
         ) : movieErrors ? (
           <Text>Error: {movieErrors?.message}</Text>
         ) : (
-          <View style={{}}>
+          <View >
             <SearchBar
               onPress={onPressSearch}
-              placeholdeText={"Search a movie"}
+              placeholdeText={"Search for 300+ movies online"}
             />
             <>
               <Text style={styles.latestMovies}>Latest Movies</Text>
@@ -59,13 +59,15 @@ const Index = () => {
                 renderItem={({ item }) => <MovieCard {...item} />}
                 keyExtractor={(item) => item.id.toString()}
                 numColumns={3}
+                windowSize={40}
+                maxToRenderPerBatch={40}
                 columnWrapperStyle={{
                   justifyContent: "flex-start",
-                  gap: 20,
+                  gap: 16,
                   paddingRight: 5,
                   marginBottom: 10,
-                  // marginVertical:100
                 }}
+                contentContainerStyle={{paddingBottom:170}}
               />
             </>
           </View>
@@ -88,7 +90,7 @@ const styles = StyleSheet.create({
   scrolView: {
     flex: 1,
     padding: 5,
-    marginBlockEnd:180 // margin end controller 
+    //marginBlockEnd:180 // margin end controller 
   },
   imgLogo: {
     width: 60,
@@ -120,6 +122,7 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontWeight: "bold",
     margin: 10,
+    marginTop:0,
   },
 
   flatlist_container: {

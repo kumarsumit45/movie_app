@@ -4,16 +4,17 @@ import { Image } from "react-native";
 import AppIcons from "@/constants/icons";
 import { TextInput } from "react-native";
 
-const SearchBar = ({onPress,placeholdeText}) => {
+const SearchBar = ({onPress,placeholdeText,value,onChangeText}) => {
   return (
     <View style={styles.container}>
       <Image source={AppIcons.search} />
       <TextInput 
       placeholder={placeholdeText} //"Search 300+ movies online" 
       style={styles.searchText}
+      value={value}
       placeholderTextColor={"#a8b5db"} 
       onPress={onPress}
-      onChangeText={()=>{}}/>
+      onChangeText={onChangeText}/>
     </View>
   );
 };
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     color: "#ffffffff",
     paddingTop: 10,
+    flex:1
     
   },
 });
