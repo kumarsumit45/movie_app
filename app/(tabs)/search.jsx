@@ -40,8 +40,8 @@ const Search = () => {
 
 const sortedMovies = movies?.sort((a, b) => {
     const dateA = new Date(a.release_date || '1900-01-01');
-    const dateB = new Date(b.release_date || '1900-01-01');
-    return dateB - dateA; // Descending order (newest first)
+    const dateB = new Date(b.release_date || '2026-01-01');
+    return dateB - dateA; 
   });
 
   return (
