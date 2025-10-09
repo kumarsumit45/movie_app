@@ -49,6 +49,18 @@ export const fetchMoviesDetails = async (moiveId)=>{
 
 }
 
+export const fetchMovieVideos = async (movieId) => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`
+    );
+    const data = await response.json();
+    return data.results; // Returns array of video objects
+  } catch (error) {
+    console.error('Error fetching movie videos:', error);
+    return [];
+  }
+};
 
 // const url = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc';
 // const options = {
