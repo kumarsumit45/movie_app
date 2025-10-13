@@ -9,9 +9,7 @@ import { ActivityIndicator, FlatList, Image, StyleSheet, Text, View } from "reac
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Search = () => {
-
   
-
   const [searchQuery,setSearchQuery] = useState('')
 
    const {

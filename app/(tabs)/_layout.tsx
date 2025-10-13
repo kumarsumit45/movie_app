@@ -10,8 +10,6 @@ const RootLayout = () => {
         headerShown:false,
         tabBarShowLabel:false,
         tabBarItemStyle:{
-            // width:"100%",
-            // flex:1,
             flexDirection:"row",
             alignItems:"center",
             justifyContent:"center",
