@@ -34,7 +34,7 @@ const Index = () => {
     <SafeAreaView style={styles.conatiner}>
       <Image source={AppImages.bg} style={styles.image} />
       <View style={styles.scrolView}>
-        <Image source={AppIcons.logo} style={styles.imgLogo} />
+        <Image source={AppIcons.movielogo} style={styles.imgLogo} />
 
         {movieLoading ? (
           <ActivityIndicator
@@ -72,7 +72,9 @@ const Index = () => {
             </>
           </View>
         )}
+        
       </View>
+      <View style={styles.bottomSpacing} />
     </SafeAreaView>
   );
 };
@@ -93,10 +95,10 @@ const styles = StyleSheet.create({
     //marginBlockEnd:180 // margin end controller 
   },
   imgLogo: {
-    width: 60,
-    height: 50,
-    marginTop: 10,
-    marginBottom: 5,
+    width: 80,
+    height: 80,
+    marginTop: 0,
+    marginBottom: 0,
     alignSelf: "center",
   },
   searchView: {
@@ -127,6 +129,10 @@ const styles = StyleSheet.create({
 
   flatlist_container: {
     
+  },
+  
+  bottomSpacing: {
+    height: 100,
   },
 });
 

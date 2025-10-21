@@ -13,6 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import AppIcons from "@/constants/icons";
 import useFetch from "@/services/useFetch";
 import { fetchMoviesDetails } from "@/services/api";
+import { useFavorites } from "@/context/FavoritesContext";
 
 // Type Definitions
 interface Genre {
@@ -58,10 +59,27 @@ const MovieInfo = ({ label, value }: MovieInfoProps) => (
 const MovieDetails = () => {
   const router = useRouter();
   const { id } = useLocalSearchParams();
+  const { addFavorite, removeFavorite, isFavorite } = useFavorites();
 
   const { data: movie, loading } = useFetch<Movie>(() =>
     fetchMoviesDetails(id as string)
   );
+
+  const handleToggleFavorite = () => {
+    if (!movie) return;
+
+    if (isFavorite(movie.id)) {
+      removeFavorite(movie.id);
+    } else {
+      addFavorite({
+        id: movie.id,
+        title: movie.title,
+        poster_path: movie.poster_path,
+        vote_average: movie.vote_average,
+        release_date: movie.release_date,
+      });
+    }
+  };
 
   if (loading)
     return (
@@ -70,7 +88,7 @@ const MovieDetails = () => {
       </SafeAreaView>
     );
 
-  
+
 
   return (
     <View style={styles.container}>
@@ -88,6 +106,20 @@ const MovieDetails = () => {
             <Image
               source={AppIcons.play}
               style={styles.playIcon}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.favoriteButton}
+            onPress={handleToggleFavorite}
+          >
+            <Image
+              source={AppIcons.save}
+              style={[
+                styles.favoriteIcon,
+                isFavorite(movie?.id ?? 0) && styles.favoriteIconActive
+              ]}
               resizeMode="contain"
             />
           </TouchableOpacity>
@@ -187,6 +219,25 @@ const styles = StyleSheet.create({
     width: 24,
     height: 28,
     marginLeft: 4,
+  },
+  favoriteButton: {
+    position: "absolute",
+    top: 20,
+    right: 20,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: "rgba(15, 13, 35, 0.8)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  favoriteIcon: {
+    width: 24,
+    height: 24,
+    tintColor: "#fff",
+  },
+  favoriteIconActive: {
+    tintColor: "#AB8BFF",
   },
   detailsContainer: {
     paddingHorizontal: 20,

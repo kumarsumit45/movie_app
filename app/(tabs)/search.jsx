@@ -63,7 +63,7 @@ const sortedMovies = movies?.sort((a, b) => {
            ListHeaderComponent={
             <>
             <View>
-              <Image source={AppIcons.logo} style={styles.logoImage}/>
+              <Image source={AppIcons.movielogo} style={styles.logoImage}/>
             </View>
 
             <View>
@@ -100,7 +100,7 @@ const sortedMovies = movies?.sort((a, b) => {
            }
            ListEmptyComponent={
             !movieLoading && !movieErrors ? (
-              <View>
+              <View style={styles.textContainer}>
                 <Text style={styles.emptyListtext}>{searchQuery.trim() ? 'No movies found': 'search for a movie'}</Text>
               </View>
             ):null
@@ -128,10 +128,8 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   logoImage:{
-    width: 60,
-    height: 50,
-    marginTop: 10,
-    marginBottom: 5,
+    width: 80,
+    height: 80,
     alignSelf: "center",
   },
   error_text:{
@@ -158,6 +156,12 @@ const styles = StyleSheet.create({
     color:"#a09696ff",
     alignSelf:"center",
     marginTop:30
+  },
+  textContainer:{
+    flex:1,
+    alignItems:"center",
+    justifyContent:"center",
+    height:400
   }
 })
 

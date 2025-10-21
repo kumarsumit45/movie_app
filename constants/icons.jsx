@@ -8,6 +8,7 @@ const AppIcons = {
   save: require("@/assets/icons/save.png"),
   search: require("@/assets/icons/search.png"),
   star: require("@/assets/icons/star.png"),
+  movielogo : require("@/assets/icons/movielogo.png")
 
 }
 
