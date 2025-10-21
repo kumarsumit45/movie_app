@@ -6,6 +6,7 @@ import AppIcons from "@/constants/icons";
 import { Image } from 'react-native';
 import { useFavorites } from '@/context/FavoritesContext';
 import MovieCard from '@/components/MovieCard';
+import { Ionicons } from '@expo/vector-icons';
 
 const Fav = () => {
   const { favorites, loading } = useFavorites();
@@ -31,7 +32,10 @@ const Fav = () => {
         </View>
       ) : (
         <View style={styles.contentContainer}>
+          <View style={{flexDirection:"row",justifyContent:"space-between"}}>
           <Text style={styles.headerText}>My Favorites</Text>
+          <Ionicons name="heart" size={34} color={'#fff'} />
+          </View>
           <FlatList
             data={favorites}
             keyExtractor={(item) => item.id.toString()}
